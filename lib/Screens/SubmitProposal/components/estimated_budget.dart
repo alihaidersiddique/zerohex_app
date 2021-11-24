@@ -1,14 +1,23 @@
-// ignore_for_file: missing_return
-
+// ignore_for_file: missing_return, must_be_immutable, unused_import
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:money_converter/Currency.dart';
+import 'package:money_converter/money_converter.dart';
 import 'package:zerohex_app/Screens/SubmitProposal/components/heading_text.dart';
+import 'package:http/http.dart' as http;
 
-class buildEstimatedBudget extends StatelessWidget {
+class buildEstimatedBudget extends StatefulWidget {
   buildEstimatedBudget({Key key, this.valueZHX}) : super(key: key);
 
   TextEditingController valueZHX = TextEditingController();
+  TextEditingController valueUSD = TextEditingController();
 
+  @override
+  State<buildEstimatedBudget> createState() => _buildEstimatedBudgetState();
+}
+
+class _buildEstimatedBudgetState extends State<buildEstimatedBudget> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -29,7 +38,8 @@ class buildEstimatedBudget extends StatelessWidget {
                     return 'enter estimated total budget';
                   }
                 },
-                controller: valueZHX,
+                onChanged: (value) => convCurrency(),
+                controller: widget.valueZHX,
                 textDirection: TextDirection.rtl,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
@@ -48,6 +58,8 @@ class buildEstimatedBudget extends StatelessWidget {
             Expanded(
               flex: 1,
               child: TextFormField(
+                controller: widget.valueUSD,
+                readOnly: true,
                 textDirection: TextDirection.rtl,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
@@ -63,5 +75,20 @@ class buildEstimatedBudget extends StatelessWidget {
         )
       ],
     );
+  }
+
+  void convCurrency() async {
+    var usdConvert;
+    if (widget.valueZHX.text.isEmpty) {
+      setState(() {
+        widget.valueUSD.text = '';
+      });
+    } else {
+      usdConvert = await MoneyConverter.convert(
+          Currency(Currency.EUR, amount: double.parse(widget.valueZHX.text)),
+          Currency(Currency.USD));
+    }
+
+    setState(() => widget.valueUSD.text = usdConvert.toString());
   }
 }

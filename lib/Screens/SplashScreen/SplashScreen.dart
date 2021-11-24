@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zerohex_app/HomePage/HomePage.dart';
-import 'package:zerohex_app/Screens/Login/login_page.dart';
+import 'package:zerohex_app/Screens/Login/login.dart';
 
 String finalToken;
 
@@ -29,7 +29,7 @@ class SplashScreenState extends State<SplashScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => finalToken == null ? LoginPage() : HomePage(),
+        builder: (context) => finalToken == null ? LoginScreen() : HomePage(),
       ),
     );
   }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zerohex_app/Screens/Login/login_page.dart';
+import 'package:zerohex_app/Screens/Login/login.dart';
 import 'package:zerohex_app/Screens/SubmitProposal/submit_proposal.dart';
 
 Future<void> main() async {
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'App',
       theme: ThemeData(primarySwatch: Colors.grey, fontFamily: "Poppin-Light"),
-      home: SubmitProposal(),
+      home: LoginScreen(),
       debugShowCheckedModeBanner: false,
     );
   }

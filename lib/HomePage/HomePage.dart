@@ -3,7 +3,7 @@
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:zerohex_app/Screens/Login/login_page.dart';
+import 'package:zerohex_app/Screens/Login/login.dart';
 import 'package:zerohex_app/widgets/CustomAppBar.dart';
 
 class HomePage extends StatefulWidget {
@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
                     prefs.clear();
                     prefs.commit();
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => LoginPage()));
+                        MaterialPageRoute(builder: (context) => LoginScreen()));
                   },
                   child: Text('Log out'),
                 ),

@@ -1,21 +1,17 @@
 // ignore_for_file: avoid_init_to_null, avoid_print, prefer_typing_uninitialized_variables, unused_field, missing_return
 
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:zerohex_app/HomePage/HomePage.dart';
-import 'package:zerohex_app/Screens/SignUp/register_page.dart';
+import 'package:zerohex_app/Screens/SignUp/signUp.dart';
+import 'package:zerohex_app/Services/ApiServices/auth.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key key}) : super(key: key);
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key key}) : super(key: key);
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginScreenState extends State<LoginScreen> {
   // controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -51,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
   TextButton buildCreateAccount(BuildContext context) {
     return TextButton(
       onPressed: () => Navigator.push(
-          context, MaterialPageRoute(builder: (context) => RegisterPage())),
+          context, MaterialPageRoute(builder: (context) => SignUpScreen())),
       child: const Text('Not Registered ? Create an account'),
     );
   }
@@ -62,7 +58,8 @@ class _LoginPageState extends State<LoginPage> {
         final isValid = formKey.currentState.validate();
         if (isValid) {
           print("Login pressed");
-          signIn(emailController.text, passwordController.text);
+          Auth().loginApiCall(
+              emailController.text, passwordController.text, context);
         }
       },
       child: const Text('Login'),
@@ -115,26 +112,5 @@ class _LoginPageState extends State<LoginPage> {
         hintText: 'xyz@email.com',
       ),
     );
-  }
-
-  void signIn(String mobile, pass) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    //
-    Map data = {'email': mobile, 'password': pass};
-    var response = await http.post(url, body: data);
-    //
-    if (response.statusCode == 200) {
-      jsonResponse = json.decode(response.body);
-      if (jsonResponse != null) {
-        print(jsonResponse['token']);
-        print('login successfully');
-        prefs.setString('token', jsonResponse['token']);
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => HomePage()));
-      } else {
-        errorMsg = response.body;
-        print("The error message is: ${response.body}");
-      }
-    }
   }
 }

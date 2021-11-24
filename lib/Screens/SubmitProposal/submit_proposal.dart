@@ -3,8 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:zerohex_app/Screens/SubmitProposal/components/body.dart';
 
 class SubmitProposal extends StatelessWidget {
-  const SubmitProposal({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
