@@ -49,7 +49,7 @@ class Auth {
 
     var response = await http.post(url, body: data);
 
-    if (response.statusCode == 200) {
+    if (response.statusCode == 201) {
       var jsonResponse = json.decode(response.body);
       if (jsonResponse != null) {
         prefs.setString("token", jsonResponse['token']);

@@ -6,7 +6,10 @@ import 'package:zerohex_app/Screens/ProjectDetails/components/project_meta.dart'
 import 'package:zerohex_app/Screens/SubmitOffer/components/body.dart';
 
 class Body extends StatelessWidget {
-  Body({Key key}) : super(key: key);
+  Body({
+    Key key,
+    this.serverSide,
+  }) : super(key: key);
 
   final customerImage = 'assets/project_details/img5.jpeg';
   final customerName = 'Georgius Revaldo';
@@ -16,23 +19,25 @@ class Body extends StatelessWidget {
   final projectDescription =
       'Here’s the request description. >> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor Here’s the request description. >> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor Here’s the request description. >> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor';
   final projectTitle = 'Redesigning E-Commerce Website and Webapp for 3 days';
-
   final actualFiles = BodyState.actualFiles;
   final previewFiles = BodyState.previewFiles;
+  final serverSide;
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: [
-          ProjectImages(),
+          // ProjectImages(),
           CustomerInfo(
             customerImage: customerImage,
             customerName: customerName,
             customerProjects: customerProjects,
           ),
           ProjectDates(
-              postedDate: postedDate, submissionDeadline: submissionDeadline),
+              postedDate: postedDate,
+              submissionDeadline: submissionDeadline,
+              serverSide: serverSide),
           ProjectTitleDescription(
             projectTitle: projectTitle,
             projectDescription: projectDescription,

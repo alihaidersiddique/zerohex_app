@@ -142,6 +142,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             designationController.text,
             context,
           );
+          print('data is passed to the database');
         }
       },
     );

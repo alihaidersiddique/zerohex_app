@@ -23,57 +23,60 @@ class _buildEstimatedBudgetState extends State<buildEstimatedBudget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        HeadingText(
-          text: 'Est. total budget',
-        ),
+        HeadingText(text: 'Est. total budget'),
         SizedBox(height: 10),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Expanded(
-              flex: 1,
-              child: TextFormField(
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'enter estimated total budget';
-                  }
-                },
-                onChanged: (value) => convCurrency(),
-                controller: widget.valueZHX,
-                textDirection: TextDirection.rtl,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'ZHX',
-                  hintStyle: GoogleFonts.poppins(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.grey),
-                ),
-              ),
-            ),
+            buildUserTextField(),
             Padding(
               padding: EdgeInsets.only(left: 10, right: 10),
               child: Text('≈'),
             ),
-            Expanded(
-              flex: 1,
-              child: TextFormField(
-                controller: widget.valueUSD,
-                readOnly: true,
-                textDirection: TextDirection.rtl,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: '\$',
-                  hintStyle: GoogleFonts.poppins(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.grey),
-                ),
-              ),
-            ),
+            buildConverionTextField(),
           ],
         )
       ],
+    );
+  }
+
+  Expanded buildConverionTextField() {
+    return Expanded(
+      flex: 1,
+      child: TextFormField(
+        keyboardType: TextInputType.number,
+        controller: widget.valueUSD,
+        readOnly: true,
+        textDirection: TextDirection.rtl,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(),
+          hintText: '\$',
+          hintStyle: GoogleFonts.poppins(
+              fontSize: 14, fontWeight: FontWeight.w400, color: Colors.grey),
+        ),
+      ),
+    );
+  }
+
+  Expanded buildUserTextField() {
+    return Expanded(
+      flex: 1,
+      child: TextFormField(
+        keyboardType: TextInputType.number,
+        validator: (value) {
+          if (value.isEmpty) {
+            return 'enter estimated total budget';
+          }
+        },
+        onChanged: (value) => convCurrency(),
+        controller: widget.valueZHX,
+        textDirection: TextDirection.rtl,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(),
+          hintText: 'ZHX',
+          hintStyle: GoogleFonts.poppins(
+              fontSize: 14, fontWeight: FontWeight.w400, color: Colors.grey),
+        ),
+      ),
     );
   }
 

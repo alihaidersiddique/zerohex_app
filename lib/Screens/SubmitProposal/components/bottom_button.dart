@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zerohex_app/Services/ApiServices/proposal.dart';
 
 class BottomButton extends StatefulWidget {
@@ -31,8 +32,11 @@ class _BottomButtonState extends State<BottomButton> {
     return buildButton(widget.formKey);
   }
 
+  var token;
+
   Container buildButton(final formKey) {
     double screenWidth = MediaQuery.of(context).size.width;
+
     return Container(
       width: screenWidth,
       child: ElevatedButton(
@@ -43,7 +47,8 @@ class _BottomButtonState extends State<BottomButton> {
                 widget.projTitle.text,
                 widget.projDesc.text,
                 widget.estBudget.text,
-                widget.subDeadline.text);
+                widget.subDeadline.text,
+                token);
           }
         },
         style: ElevatedButton.styleFrom(
@@ -55,5 +60,17 @@ class _BottomButtonState extends State<BottomButton> {
         ),
       ),
     );
+  }
+
+  void getToken() async {
+    final pref = await SharedPreferences.getInstance();
+    token = pref.getString('token');
+    print(token);
+  }
+
+  @override
+  void initState() {
+    getToken();
+    super.initState();
   }
 }
