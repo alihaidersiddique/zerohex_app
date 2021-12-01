@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zerohex_app/Screens/SubmitProposal/components/description_box.dart';
-import 'package:zerohex_app/Screens/SubmitProposal/components/heading_text.dart';
+import 'package:zerohex_app/widgets/heading_text.dart';
 
 class buildDescribeWork extends StatelessWidget {
   const buildDescribeWork({Key key, this.desc}) : super(key: key);

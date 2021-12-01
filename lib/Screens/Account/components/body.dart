@@ -3,6 +3,7 @@ import 'package:zerohex_app/Screens/Account/Components/account_header.dart';
 import 'package:zerohex_app/Screens/Account/Components/account_tiles.dart';
 import 'package:flutter/services.dart';
 import 'package:zerohex_app/Screens/Account/Components/copy_field.dart';
+import 'package:zerohex_app/widgets/heading_text.dart';
 import '../../../size_config.dart';
 
 class Body extends StatefulWidget {
@@ -19,14 +20,6 @@ class _BodyState extends State<Body> {
   final String accountEmail = 'Jhonathanb@gmail.com';
   final String accountJob = 'UI Designer';
 
-  // This function is triggered when the copy icon is pressed
-  Future<void> _copyToClipboard() async {
-    await Clipboard.setData(ClipboardData(text: walletId));
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text('Copied to clipboard'),
-    ));
-  }
-
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -38,7 +31,7 @@ class _BodyState extends State<Body> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             AccountHeader(),
-            SizedBox(height: 20),
+            SizedBox(height: 40),
             Container(
               padding: const EdgeInsets.only(left: 20, right: 20),
               child: Column(
@@ -50,7 +43,7 @@ class _BodyState extends State<Body> {
                     walletId: walletId,
                   ),
                   SizedBox(height: 10),
-                  buildText('General'),
+                  HeadingText(text: 'General'),
                   SizedBox(height: 10),
                   AccountTile(
                     title: accountName,
@@ -66,7 +59,7 @@ class _BodyState extends State<Body> {
                     bottomRight: true,
                   ),
                   SizedBox(height: 10),
-                  buildText('Security'),
+                  HeadingText(text: 'Security'),
                   SizedBox(height: 5),
                   AccountTile(
                     title: 'Privacy Policy',
@@ -100,10 +93,18 @@ class _BodyState extends State<Body> {
     return Text(
       title,
       style: TextStyle(
-        fontWeight: FontWeight.w800,
-        fontSize: 20,
-        color: Color(0xff43525D),
+        fontWeight: FontWeight.w400,
+        fontSize: 16,
+        color: Colors.red,
       ),
     );
+  }
+
+  // This function is triggered when the copy icon is pressed
+  Future<void> _copyToClipboard() async {
+    await Clipboard.setData(ClipboardData(text: walletId));
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text('Copied to clipboard'),
+    ));
   }
 }

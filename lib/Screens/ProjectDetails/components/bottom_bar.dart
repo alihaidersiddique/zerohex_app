@@ -18,7 +18,7 @@ class _BottomBarState extends State<BottomBar> {
 
   final submitOffer = 'Submit Offer';
 
-  final proceedToPay = 'Proceed To Pay';
+  final viewSubmissions = 'View Submissions';
 
   final bigPrice = '11,467 ZHX';
 
@@ -70,15 +70,15 @@ class _BottomBarState extends State<BottomBar> {
             ],
           ),
           widget.serverSide == true
-              ? buildDataButton(context, submitOffer, onPressedNavigation())
-              : buildDataButton(context, proceedToPay, onPressedPopUp())
+              ? buildDataButton(context, submitOffer, onPressedNavigation)
+              : buildDataButton(context, viewSubmissions, () {})
         ],
       ),
     );
   }
 
   ElevatedButton buildDataButton(
-      BuildContext context, final btnText, Function onPressed) {
+      BuildContext context, final btnText, void Function() onPressed) {
     return ElevatedButton(
       onPressed: onPressed,
       child: Text(actualFiles.isNotEmpty ? deliverAgain : btnText,
@@ -101,8 +101,9 @@ class _BottomBarState extends State<BottomBar> {
       ),
     );
   }
+}
 
-  // showModalBottomSheet(
+ // showModalBottomSheet(
   //     shape: RoundedRectangleBorder(
   //       borderRadius: BorderRadius.only(
   //         topLeft: Radius.circular(30),
@@ -181,4 +182,3 @@ class _BottomBarState extends State<BottomBar> {
   //     MaterialPageRoute(
   //       builder: (context) => SubmitOffer(),
   //     ));
-}

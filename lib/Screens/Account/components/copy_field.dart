@@ -22,14 +22,17 @@ class CopyField extends StatelessWidget {
             Text(
               'Registered Wallet',
               style: TextStyle(
-                  color: Color(0xFFB8C1C8), fontWeight: FontWeight.w700),
+                  color: Colors.grey[500], fontWeight: FontWeight.w500),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   walletId,
-                  style: TextStyle(color: Colors.black87),
+                  style: TextStyle(
+                      fontSize: (defaultSize * (1.6)), //16
+                      color: Color(0xFF4F5D67),
+                      fontWeight: FontWeight.w400),
                 ),
                 IconButton(
                   onPressed: press,

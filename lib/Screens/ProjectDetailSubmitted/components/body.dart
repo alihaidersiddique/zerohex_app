@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zerohex_app/Screens/ProjectDetails/components/customer_info.dart';
 import 'package:zerohex_app/Screens/ProjectDetails/components/project_dates.dart';
-import 'package:zerohex_app/Screens/ProjectDetails/components/project_images.dart';
+import 'package:zerohex_app/widgets/project_images.dart';
 import 'package:zerohex_app/Screens/ProjectDetailSubmitted/components/project_description.dart';
 import 'package:zerohex_app/Screens/SubmitOffer/components/body.dart';
 

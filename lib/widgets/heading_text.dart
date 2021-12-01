@@ -14,7 +14,7 @@ class HeadingText extends StatelessWidget {
     return Text(
       text,
       style: GoogleFonts.poppins(
-          fontSize: 16, fontWeight: FontWeight.w600, color: Color(0xff43525E)),
+          fontSize: 17, fontWeight: FontWeight.w600, color: Color(0xff43525E)),
     );
   }
 }

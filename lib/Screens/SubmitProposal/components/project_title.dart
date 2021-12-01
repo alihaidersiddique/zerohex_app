@@ -2,13 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:zerohex_app/Screens/SubmitProposal/components/heading_text.dart';
+import 'package:zerohex_app/widgets/heading_text.dart';
 
 class buildProjectTitle extends StatelessWidget {
-  buildProjectTitle({
-    Key key,
-    this.projectTitle,
-  }) : super(key: key);
+  buildProjectTitle({Key key, this.projectTitle}) : super(key: key);
 
   TextEditingController projectTitle = TextEditingController();
 

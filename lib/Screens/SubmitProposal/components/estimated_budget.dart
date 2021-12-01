@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:money_converter/Currency.dart';
 import 'package:money_converter/money_converter.dart';
-import 'package:zerohex_app/Screens/SubmitProposal/components/heading_text.dart';
+import 'package:zerohex_app/widgets/heading_text.dart';
 import 'package:http/http.dart' as http;
 
 class buildEstimatedBudget extends StatefulWidget {

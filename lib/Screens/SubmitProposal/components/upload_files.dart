@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:zerohex_app/Screens/SubmitProposal/components/bottom_button.dart';
-import 'package:zerohex_app/Screens/SubmitProposal/components/heading_text.dart';
+import 'package:zerohex_app/widgets/heading_text.dart';
 
 class buildUploadFiles extends StatelessWidget {
   //

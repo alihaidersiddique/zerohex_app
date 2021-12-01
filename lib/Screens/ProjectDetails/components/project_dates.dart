@@ -5,13 +5,11 @@ class ProjectDates extends StatelessWidget {
     Key key,
     this.postedDate,
     this.submissionDeadline,
-    this.serverSide,
   }) : super(key: key);
 
   final postedDate, submissionDeadline;
   final datePostTitle = 'Posted:';
   final dateSubmissionTitle = 'Deadline Submission:';
-  final serverSide;
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +17,9 @@ class ProjectDates extends StatelessWidget {
       padding: EdgeInsets.only(right: 20, top: 20, left: 20, bottom: 10),
       child: Row(
         children: [
-          projectDates(serverSide == true ? 'Posted' : 'Submitted', postedDate),
+          projectDates('Posted', postedDate),
           SizedBox(width: 40),
-          serverSide == true
-              ? projectDates(dateSubmissionTitle, submissionDeadline)
-              : Container(),
+          projectDates(dateSubmissionTitle, submissionDeadline)
         ],
       ),
     );
